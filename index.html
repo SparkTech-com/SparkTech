@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="description" content="SparkTech — India's #1 premium electronics store. Best prices on laptops, mobiles, tablets, PC components and accessories.">
+<title>SparkTech — Premium Electronics Store</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<style>
+.hero__inner{grid-template-columns:1fr}
+@media(min-width:900px){.hero__inner{grid-template-columns:1fr 1fr}}
+.nl-wrap h2 span{color:var(--yellow)}
+.deals-big{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:520px){.deals-big{grid-template-columns:2fr 1fr}}
+</style>
+</head>
+<body data-page="home">
+
+<!-- ════ PRELOADER — runs once per session on home page only ════ -->
+<div id="preloader" role="status" aria-label="Loading SparkTech">
+  <div class="pl-rings">
+    <div class="pl-ring"></div><div class="pl-ring"></div><div class="pl-ring"></div>
+  </div>
+  <div class="pl-sparks">
+    <div class="pl-spark"></div><div class="pl-spark"></div><div class="pl-spark"></div>
+    <div class="pl-spark"></div><div class="pl-spark"></div><div class="pl-spark"></div>
+  </div>
+  <div class="pl-logo">
+    <div class="pl-icon">⚡</div>
+    <div class="pl-word">Spark<span>Tech</span></div>
+    <div class="pl-tag">Next-Gen Technology &nbsp;·&nbsp; Best Prices</div>
+    <div class="pl-dots">
+      <div class="pl-dot"></div><div class="pl-dot"></div>
+      <div class="pl-dot"></div><div class="pl-dot"></div>
+    </div>
+  </div>
+  <div class="pl-bar"><div class="pl-bar-fill"></div></div>
+</div>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar__inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="navbar__logo" aria-label="SparkTech Home">
+      <div class="navbar__logo-icon">⚡</div>
+      <div>Spark<span>Tech</span></div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="navbar__links">
+      <a href="index.html" data-page="home">Home</a>
+      <!-- Products mega dropdown -->
+      <span class="has-dd" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+        Products <i class="fas fa-chevron-down dd-arrow" aria-hidden="true"></i>
+        <div class="nav-dropdown" role="menu">
+          <a href="laptops.html"     data-page="laptops"     role="menuitem"><span class="ico">💻</span> Laptops</a>
+          <a href="mobiles.html"     data-page="mobiles"     role="menuitem"><span class="ico">📱</span> Mobiles</a>
+          <a href="tablets.html"     data-page="tablets"     role="menuitem"><span class="ico">📲</span> Tablets</a>
+          <a href="computers.html"   data-page="computers"   role="menuitem"><span class="ico">🖥️</span> Computers</a>
+          <a href="components.html"  data-page="components"  role="menuitem"><span class="ico">⚙️</span> Components</a>
+          <a href="accessories.html" data-page="accessories" role="menuitem"><span class="ico">🎧</span> Accessories</a>
+          <a href="smartwatches.html"data-page="smartwatches"role="menuitem"><span class="ico">⌚</span> Smartwatches</a>
+          <a href="gaming.html"      data-page="gaming"      role="menuitem"><span class="ico">🎮</span> Gaming</a>
+        </div>
+      </span>
+      <a href="about.html" data-page="about">About Us</a>
+    </div>
+
+    <!-- Search box with X clear button -->
+    <div class="navbar__search" role="search">
+      <i class="fas fa-search s-icon" aria-hidden="true"></i>
+      <input type="search" class="search-input" placeholder="Search laptops, phones, GPUs…" autocomplete="off" aria-label="Search products">
+      <button class="s-clear" aria-label="Clear search" title="Clear search"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Actions — right side (wish / cart / hamburger) -->
+    <div class="navbar__actions">
+      <button class="navbar__btn" id="open-wishlist" aria-label="Open wishlist">
+        <i class="far fa-heart" aria-hidden="true"></i>
+        <span class="navbar__badge" id="wish-badge" data-count="0">0</span>
+      </button>
+      <a href="cart.html" class="navbar__btn" aria-label="View cart">
+        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+        <span class="navbar__badge" id="cart-badge" data-count="0">0</span>
+      </a>
+      <!-- Hamburger — CSS hides this on desktop ≥900px -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile overlay + drawer -->
+<div class="mobile-nav-overlay" aria-hidden="true"></div>
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav__search">
+    <i class="fas fa-search s-icon" aria-hidden="true"></i>
+    <input type="search" class="search-input" placeholder="Search products…" autocomplete="off" aria-label="Search">
+    <button class="s-clear" aria-label="Clear"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mobile-nav__links">
+    <a href="index.html"       data-page="home"><span class="ico">🏠</span>Home</a>
+    <a href="laptops.html"     data-page="laptops"><span class="ico">💻</span>Laptops</a>
+    <a href="mobiles.html"     data-page="mobiles"><span class="ico">📱</span>Mobiles</a>
+    <a href="tablets.html"     data-page="tablets"><span class="ico">📲</span>Tablets</a>
+    <a href="computers.html"   data-page="computers"><span class="ico">🖥️</span>Computers</a>
+    <a href="components.html"  data-page="components"><span class="ico">⚙️</span>Components</a>
+    <a href="accessories.html" data-page="accessories"><span class="ico">🎧</span>Accessories</a>
+    <a href="smartwatches.html"data-page="smartwatches"><span class="ico">⌚</span>Smartwatches</a>
+    <a href="gaming.html"      data-page="gaming"><span class="ico">🎮</span>Gaming</a>
+    <a href="about.html"       data-page="about"><span class="ico">ℹ️</span>About Us</a>
+    <a href="cart.html"><span class="ico">🛒</span>Cart</a>
+    <a href="search.html"><span class="ico">🔍</span>Search</a>
+  </div>
+</nav>
+
+<!-- ════ HERO — Category-based slides, editable in HTML ════ -->
+<section class="hero" aria-label="Promotional hero banner">
+  <div class="hero__bg">
+    <div class="hero__orb hero__orb-1"></div>
+    <div class="hero__orb hero__orb-2"></div>
+    <div class="hero__orb hero__orb-3"></div>
+    <div class="hero__grid"></div>
+  </div>
+  <div class="hero__inner container">
+    <div class="hero__text">
+      <div class="tag anim-1"><i class="fas fa-bolt"></i>&nbsp; India's #1 Electronics Store</div>
+      <h1 class="anim-2">
+        <span class="h1-1">Next-Gen</span><br>
+        <span class="h1-2">Technology,</span><br>
+        <span class="h1-3">Best Prices.</span>
+      </h1>
+      <p class="anim-3">Shop premium laptops, smartphones, tablets, PC components and accessories — curated for performance-seekers and tech enthusiasts across India.</p>
+      <div class="hero__btns anim-4">
+        <a href="laptops.html" class="btn btn-primary"><i class="fas fa-bolt"></i> Shop Now</a>
+        <a href="#categories" class="btn btn-outline"><i class="fas fa-th-large"></i> Categories</a>
+      </div>
+      <div class="hero__stats anim-5">
+        <div class="stat"><div class="num">500+</div><div class="lbl">Products</div></div>
+        <div class="stat"><div class="num">50K+</div><div class="lbl">Customers</div></div>
+        <div class="stat"><div class="num">4.9★</div><div class="lbl">Rating</div></div>
+      </div>
+    </div>
+
+    <!-- Hero Slider: category promotional slides — edit slides here in HTML -->
+    <div class="hero__visual anim-2">
+      <div class="hero-slider">
+        <!-- Prev / Next arrow buttons -->
+        <button class="hero-slider__prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="hero-slider__next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="hero-slider__track">
+          <!-- SLIDE 1 — Laptops: Edit image src, data-href, and text below -->
+          <div class="hero-slide active" data-href="laptops.html">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=520&q=80"
+              alt="Premium Laptops" loading="eager"
+              onerror="this.src='https://placehold.co/520x390/0E1320/38BEFF?text=Laptops'">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-slide__info">
+              <div class="hero-slide__brand">💻 Category</div>
+              <div class="hero-slide__name">Premium Laptops</div>
+              <div class="hero-slide__price">From ₹49,999</div>
+            </div>
+          </div>
+          <!-- SLIDE 2 — Mobiles -->
+          <div class="hero-slide" data-href="mobiles.html">
+            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=520&q=80"
+              alt="Latest Smartphones" loading="lazy"
+              onerror="this.src='https://placehold.co/520x390/0E1320/38BEFF?text=Mobiles'">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-slide__info">
+              <div class="hero-slide__brand">📱 Category</div>
+              <div class="hero-slide__name">Latest Smartphones</div>
+              <div class="hero-slide__price">From ₹14,999</div>
+            </div>
+          </div>
+          <!-- SLIDE 3 — Tablets -->
+          <div class="hero-slide" data-href="tablets.html">
+            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=520&q=80"
+              alt="Tablets &amp; iPads" loading="lazy"
+              onerror="this.src='https://placehold.co/520x390/0E1320/38BEFF?text=Tablets'">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-slide__info">
+              <div class="hero-slide__brand">📲 Category</div>
+              <div class="hero-slide__name">Tablets &amp; iPads</div>
+              <div class="hero-slide__price">From ₹24,999</div>
+            </div>
+          </div>
+          <!-- SLIDE 4 — PC Components -->
+          <div class="hero-slide" data-href="components.html">
+            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=520&q=80"
+              alt="PC Components" loading="lazy"
+              onerror="this.src='https://placehold.co/520x390/0E1320/38BEFF?text=Components'">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-slide__info">
+              <div class="hero-slide__brand">⚙️ Category</div>
+              <div class="hero-slide__name">PC Components</div>
+              <div class="hero-slide__price">GPUs, CPUs, RAM &amp; SSDs</div>
+            </div>
+          </div>
+          <!-- SLIDE 5 — Accessories -->
+          <div class="hero-slide" data-href="accessories.html">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=520&q=80"
+              alt="Accessories &amp; Audio" loading="lazy"
+              onerror="this.src='https://placehold.co/520x390/0E1320/38BEFF?text=Accessories'">
+            <div class="hero-slide__overlay"></div>
+            <div class="hero-slide__info">
+              <div class="hero-slide__brand">🎧 Category</div>
+              <div class="hero-slide__name">Accessories &amp; Audio</div>
+              <div class="hero-slide__price">Headphones, Monitors &amp; More</div>
+            </div>
+          </div>
+          <!-- ADD MORE SLIDES HERE — copy a <div class="hero-slide"> block above -->
+        </div>
+
+        <!-- Dots injected by JS from slide count -->
+        <div class="hero-slider__dots" aria-hidden="true"></div>
+      </div>
+      <!-- Floating badges -->
+      <div class="float-badge float-badge--deal"><i class="fas fa-tag"></i> Up to 30% OFF</div>
+      <div class="float-badge float-badge--rating"><i class="fas fa-star" style="color:var(--yellow)"></i> 4.9 Rated</div>
+      <div class="float-badge float-badge--ship"><i class="fas fa-truck"></i> Free Delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MARQUEE BANNER ════ -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item"><i class="fas fa-truck"></i> Free Delivery on orders above ₹999</span>
+    <span class="marquee__item"><i class="fas fa-shield-alt"></i> 1 Year Warranty on all products</span>
+    <span class="marquee__item"><i class="fas fa-undo"></i> 30-Day Easy Returns</span>
+    <span class="marquee__item"><i class="fas fa-credit-card"></i> EMI Available — Zero Cost</span>
+    <span class="marquee__item"><i class="fas fa-headset"></i> 24/7 Customer Support</span>
+    <span class="marquee__item"><i class="fas fa-star"></i> 50,000+ Happy Customers</span>
+    <span class="marquee__item"><i class="fas fa-lock"></i> 100% Secure Payments</span>
+    <span class="marquee__item"><i class="fas fa-bolt"></i> Lightning Fast Delivery</span>
+    <span class="marquee__item"><i class="fas fa-gift"></i> Exclusive Member Deals</span>
+  </div>
+</div>
+
+<!-- ════ CATEGORIES ════ -->
+<section id="categories" aria-label="Shop by category">
+  <div class="container reveal" style="padding:3.5rem 1.25rem">
+    <div class="sec-head">
+      <div class="sec-head__left">
+        <span class="tag">Browse By</span>
+        <h2>Shop by <span>Category</span></h2>
+      </div>
+    </div>
+    <div class="cat-grid">
+      <a href="laptops.html"     class="cat-pill"><div class="cat-pill__icon">💻</div><span class="cat-pill__name">Laptops</span></a>
+      <a href="mobiles.html"     class="cat-pill"><div class="cat-pill__icon">📱</div><span class="cat-pill__name">Mobiles</span></a>
+      <a href="tablets.html"     class="cat-pill"><div class="cat-pill__icon">📲</div><span class="cat-pill__name">Tablets</span></a>
+      <a href="computers.html"   class="cat-pill"><div class="cat-pill__icon">🖥️</div><span class="cat-pill__name">Computers</span></a>
+      <a href="components.html"  class="cat-pill"><div class="cat-pill__icon">⚙️</div><span class="cat-pill__name">Components</span></a>
+      <a href="accessories.html" class="cat-pill"><div class="cat-pill__icon">🎧</div><span class="cat-pill__name">Accessories</span></a>
+      <a href="smartwatches.html"class="cat-pill"><div class="cat-pill__icon">⌚</div><span class="cat-pill__name">Smartwatches</span></a>
+      <a href="gaming.html"      class="cat-pill"><div class="cat-pill__icon">🎮</div><span class="cat-pill__name">Gaming</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FEATURED CAROUSEL ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Featured products">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Top Picks</span><h2>Featured <span>Products</span></h2></div>
+    <a href="laptops.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <!-- slider-root scopes the prev/next buttons; #featured-carousel is overflow:hidden -->
+  <div class="slider-root" style="position:relative">
+    <div class="auto-carousel" id="featured-carousel">
+      <div class="carousel-track"></div>
+    </div>
+    <button class="sl-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sl-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ════ HOT DEALS ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Today's deals">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Limited Time</span><h2>Hot <span>Deals</span> Today</h2></div>
+    <div style="display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--gray)">
+      <i class="fas fa-clock" style="color:var(--yellow)"></i>
+      Ends in: <div id="countdown" class="countdown"></div>
+    </div>
+  </div>
+  <div class="deals-big">
+    <a href="laptops.html" class="deal-card">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=75" alt="MacBook Deal" loading="lazy">
+      <div class="deal-content">
+        <span class="deal-tag">⚡ Flash Sale</span>
+        <h3>Apple MacBook Pro</h3>
+        <p>M3 Pro chip · Liquid Retina XDR · 22hr battery</p>
+        <div class="deal-price">From ₹1,99,900</div>
+      </div>
+    </a>
+    <div class="deal-col">
+      <a href="mobiles.html" class="deal-card">
+        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=75" alt="iPhone 15 Pro Max" loading="lazy">
+        <div class="deal-content"><span class="deal-tag">🔥 Hot</span><h3>iPhone 15 Pro Max</h3><div class="deal-price">₹1,34,900</div></div>
+      </a>
+      <a href="accessories.html" class="deal-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=75" alt="Sony WH-1000XM5" loading="lazy">
+        <div class="deal-content"><span class="deal-tag">🎵 Audio</span><h3>Sony WH-1000XM5</h3><div class="deal-price">₹29,990</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROMO BANNER ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem">
+  <div class="promo-banner">
+    <div class="promo-text">
+      <h2>🎉 Mega Tech Sale is Live!</h2>
+      <p>Limited stock · Free delivery · EMI from ₹999/month</p>
+      <a href="laptops.html" class="btn btn-outline" style="margin-top:1rem;color:#fff;border-color:rgba(255,255,255,.4)">
+        <i class="fas fa-bolt"></i> Shop Now
+      </a>
+    </div>
+    <div class="promo-right">
+      <div class="big-pct">30%</div>
+      <div class="sub">OFF on select items</div>
+      <a href="laptops.html" class="btn btn-yellow">Grab Deal →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ LAPTOPS CAROUSEL ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Top laptops">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Laptops</span><h2>Top <span>Laptops</span></h2></div>
+    <a href="laptops.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="slider-root" style="position:relative">
+    <div class="auto-carousel" data-cat-carousel="laptops">
+      <div class="carousel-track"></div>
+    </div>
+    <button class="sl-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sl-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ════ MOBILES CAROUSEL ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Latest smartphones">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Mobiles</span><h2>Latest <span>Smartphones</span></h2></div>
+    <a href="mobiles.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="slider-root" style="position:relative">
+    <div class="auto-carousel" data-cat-carousel="mobiles">
+      <div class="carousel-track"></div>
+    </div>
+    <button class="sl-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sl-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ════ ACCESSORIES CAROUSEL ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Must-have accessories">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Accessories</span><h2>Must-Have <span>Accessories</span></h2></div>
+    <a href="accessories.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="slider-root" style="position:relative">
+    <div class="auto-carousel" data-cat-carousel="accessories">
+      <div class="carousel-track"></div>
+    </div>
+    <button class="sl-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sl-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ════ SMARTWATCHES CAROUSEL ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Smartwatches">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Smartwatches</span><h2>Wearable <span>Tech</span></h2></div>
+    <a href="smartwatches.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="slider-root" style="position:relative">
+    <div class="auto-carousel" data-cat-carousel="smartwatches">
+      <div class="carousel-track"></div>
+    </div>
+    <button class="sl-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="sl-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- ════ BRAND STRIP ════ -->
+<div class="container reveal" style="padding:0 1.25rem">
+  <div class="brand-strip" id="brand-strip" aria-hidden="true"></div>
+</div>
+
+<!-- ════ FEATURES ════ -->
+<section class="container reveal" style="padding:0 1.25rem 3rem" aria-label="Why shop with us">
+  <div class="sec-head">
+    <div class="sec-head__left"><span class="tag">Why Us</span><h2>Why Shop at <span>SparkTech</span></h2></div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-item"><div class="feature-icon"><i class="fas fa-truck-fast"></i></div><div class="feature-text"><h4>Fast Delivery</h4><p>Free delivery on orders above ₹999. Same-day express available.</p></div></div>
+    <div class="feature-item"><div class="feature-icon"><i class="fas fa-shield-halved"></i></div><div class="feature-text"><h4>1 Year Warranty</h4><p>All products backed by manufacturer warranty + SparkTech protection.</p></div></div>
+    <div class="feature-item"><div class="feature-icon"><i class="fas fa-rotate-left"></i></div><div class="feature-text"><h4>30-Day Returns</h4><p>Easy, no-questions-asked returns within 30 days of delivery.</p></div></div>
+    <div class="feature-item"><div class="feature-icon"><i class="fas fa-headset"></i></div><div class="feature-text"><h4>24/7 Support</h4><p>Round-the-clock support via chat, email, and phone.</p></div></div>
+    <div class="feature-item"><div class="feature-icon"><i class="fas fa-credit-card"></i></div><div class="feature-text"><h4>Easy EMI</h4><p>Zero-cost EMI from ₹999/month on all major credit cards.</p></div></div>
+    <div class="feature-item"><div class="feature-icon"><i class="fas fa-lock"></i></div><div class="feature-text"><h4>Secure Payments</h4><p>SSL encrypted. UPI, Visa, Mastercard, RuPay, PhonePe accepted.</p></div></div>
+  </div>
+</section>
+
+<!-- ════ NEWSLETTER ════ -->
+<div class="reveal" style="padding:0 1.25rem">
+  <div class="nl-wrap">
+    <h2>Stay in the <span>Loop</span></h2>
+    <p>Get the latest tech deals, launches, and exclusive offers in your inbox.</p>
+    <div class="nl-form">
+      <input type="email" class="nl-input" placeholder="Enter your email address" aria-label="Email address">
+      <button class="btn btn-primary" onclick="handleNewsletter(this)">
+        <i class="fas fa-paper-plane"></i> Subscribe
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer class="footer">
+  <div class="footer-grid container" style="padding:0 1.25rem">
+    <div class="footer-brand">
+      <a href="index.html" class="navbar__logo" style="font-size:1.15rem">
+        <div class="navbar__logo-icon">⚡</div>
+        <div>Spark<span>Tech</span></div>
+      </a>
+      <p>India's premium destination for laptops, mobiles, tablets, and PC components. Quality products, best prices, trusted service.</p>
+      <div class="socials">
+        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="laptops.html">Laptops</a></li>
+        <li><a href="mobiles.html">Mobiles</a></li>
+        <li><a href="tablets.html">Tablets</a></li>
+        <li><a href="computers.html">Computers</a></li>
+        <li><a href="components.html">PC Components</a></li>
+        <li><a href="accessories.html">Accessories</a></li>
+        <li><a href="smartwatches.html">Smartwatches</a></li>
+        <li><a href="gaming.html">Gaming</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Warranty Info</a></li>
+        <li><a href="#">EMI Options</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About SparkTech</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 <span>SparkTech Electronics</span>. All rights reserved. Made with ❤️ in India.</p>
+    <div class="pay-methods">🔒 UPI · Visa · Mastercard · RuPay · PhonePe</div>
+  </div>
+</footer>
+
+<!-- ════ WISHLIST MODAL ════ -->
+<div class="modal-overlay" id="wishlist-overlay" role="dialog" aria-modal="true" aria-label="Wishlist">
+  <div class="modal">
+    <div class="modal-head">
+      <h2><i class="far fa-heart" style="color:#F43F5E;margin-right:.4rem"></i>My Wishlist</h2>
+      <button class="modal-close" aria-label="Close wishlist"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div id="wishlist-grid" class="wish-empty">
+        <i class="far fa-heart"></i>
+        <p>Your wishlist is empty. Start adding products!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+function handleNewsletter(btn) {
+  const input = btn.closest('.nl-form')?.querySelector('input');
+  const email = input?.value?.trim();
+  if (!email || !email.includes('@')) { toast('Please enter a valid email address.', 'warn'); return; }
+  toast('🎉 Subscribed! Welcome to SparkTech!', 'success');
+  if (input) input.value = '';
+}
+</script>
+</body>
+</html>

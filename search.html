@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="description" content="SparkTech — Search Results">
+<title>Search — SparkTech Electronics</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body data-page="search">
+<nav class="navbar"><div class="navbar__inner">
+  <a href="index.html" class="navbar__logo"><div class="navbar__logo-icon">⚡</div><div>Spark<span>Tech</span></div></a>
+  <div class="navbar__links">
+    <a href="index.html" data-page="home">Home</a>
+    <span class="has-dd" tabindex="0" role="button">Products <i class="fas fa-chevron-down dd-arrow"></i>
+      <div class="nav-dropdown">
+        <a href="laptops.html"><span class="ico">💻</span> Laptops</a><a href="mobiles.html"><span class="ico">📱</span> Mobiles</a>
+        <a href="tablets.html"><span class="ico">📲</span> Tablets</a><a href="computers.html"><span class="ico">🖥️</span> Computers</a>
+        <a href="components.html"><span class="ico">⚙️</span> Components</a><a href="accessories.html"><span class="ico">🎧</span> Accessories</a>
+      </div>
+    </span>
+    <a href="about.html">About Us</a>
+  </div>
+  <div class="navbar__search">
+    <i class="fas fa-search s-icon"></i>
+    <input type="search" class="search-input" placeholder="Search products…" autocomplete="off">
+    <button class="s-clear"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="navbar__actions">
+    <button class="navbar__btn" id="open-wishlist"><i class="far fa-heart"></i><span class="navbar__badge" id="wish-badge" data-count="0">0</span></button>
+    <a href="cart.html" class="navbar__btn"><i class="fas fa-shopping-cart"></i><span class="navbar__badge" id="cart-badge" data-count="0">0</span></a>
+    <button class="hamburger"><span class="hamburger__line"></span><span class="hamburger__line"></span><span class="hamburger__line"></span></button>
+  </div>
+</div></nav>
+<div class="mobile-nav-overlay"></div>
+<nav class="mobile-nav">
+  <div class="mobile-nav__search"><i class="fas fa-search s-icon"></i><input type="search" class="search-input" placeholder="Search…" autocomplete="off"><button class="s-clear"><i class="fas fa-times"></i></button></div>
+  <div class="mobile-nav__links">
+    <a href="index.html"><span class="ico">🏠</span>Home</a><a href="laptops.html"><span class="ico">💻</span>Laptops</a>
+    <a href="mobiles.html"><span class="ico">📱</span>Mobiles</a><a href="about.html"><span class="ico">ℹ️</span>About Us</a>
+    <a href="cart.html"><span class="ico">🛒</span>Cart</a>
+  </div>
+</nav>
+<main style="padding-top:var(--nav-h);min-height:80vh">
+  <div class="container" style="padding:2rem 1.25rem">
+    <nav class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span style="color:var(--white)">Search</span></nav>
+    <h1 id="search-heading" style="font-family:var(--fh);font-size:1.5rem;margin-bottom:1.5rem"><i class="fas fa-search" style="color:var(--sky);margin-right:.5rem"></i>Search Results</h1>
+    <div class="products-grid" id="search-grid" aria-live="polite"></div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer-grid container" style="padding:0 1.25rem">
+    <div class="footer-brand"><a href="index.html" class="navbar__logo" style="font-size:1.15rem"><div class="navbar__logo-icon">⚡</div><div>Spark<span>Tech</span></div></a><p>India's premium electronics store.</p></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="laptops.html">Laptops</a></li><li><a href="mobiles.html">Mobiles</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Privacy</a></li></ul></div>
+    <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2024 <span>SparkTech Electronics</span>. All rights reserved.</p></div>
+</footer>
+<div class="modal-overlay" id="wishlist-overlay" role="dialog" aria-modal="true">
+  <div class="modal"><div class="modal-head"><h2><i class="far fa-heart" style="color:#F43F5E;margin-right:.4rem"></i>My Wishlist</h2><button class="modal-close"><i class="fas fa-times"></i></button></div>
+  <div class="modal-body"><div id="wishlist-grid" class="wish-empty"><i class="far fa-heart"></i><p>Wishlist is empty.</p></div></div></div>
+</div>
+<script src="products.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const q = new URLSearchParams(location.search).get('q') || '';
+  document.querySelectorAll('.search-input').forEach(i => { if (!i.value) i.value = q; });
+  // Sync clear buttons after pre-fill
+  document.querySelectorAll('.s-clear').forEach(btn => {
+    const input = btn.closest('.navbar__search,.mobile-nav__search')?.querySelector('.search-input');
+    if (input) btn.classList.toggle('vis', input.value.length > 0);
+  });
+});
+</script>
+</body>
+</html>

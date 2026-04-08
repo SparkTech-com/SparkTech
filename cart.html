@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="description" content="SparkTech — Shopping Cart">
+<title>Cart — SparkTech Electronics</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body data-page="cart">
+
+<nav class="navbar" role="navigation">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><div class="navbar__logo-icon">⚡</div><div>Spark<span>Tech</span></div></a>
+    <div class="navbar__links">
+      <a href="index.html" data-page="home">Home</a>
+      <span class="has-dd" tabindex="0" role="button" aria-haspopup="true">
+        Products <i class="fas fa-chevron-down dd-arrow"></i>
+        <div class="nav-dropdown" role="menu">
+          <a href="laptops.html" role="menuitem"><span class="ico">💻</span> Laptops</a>
+          <a href="mobiles.html" role="menuitem"><span class="ico">📱</span> Mobiles</a>
+          <a href="tablets.html" role="menuitem"><span class="ico">📲</span> Tablets</a>
+          <a href="computers.html" role="menuitem"><span class="ico">🖥️</span> Computers</a>
+          <a href="components.html" role="menuitem"><span class="ico">⚙️</span> Components</a>
+          <a href="accessories.html" role="menuitem"><span class="ico">🎧</span> Accessories</a>
+        </div>
+      </span>
+      <a href="about.html" data-page="about">About Us</a>
+    </div>
+    <div class="navbar__search" role="search">
+      <i class="fas fa-search s-icon"></i>
+      <input type="search" class="search-input" placeholder="Search products…" autocomplete="off">
+      <button class="s-clear"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="navbar__actions">
+      <button class="navbar__btn" id="open-wishlist" aria-label="Wishlist">
+        <i class="far fa-heart"></i><span class="navbar__badge" id="wish-badge" data-count="0">0</span>
+      </button>
+      <a href="cart.html" class="navbar__btn" aria-label="Cart">
+        <i class="fas fa-shopping-cart"></i><span class="navbar__badge" id="cart-badge" data-count="0">0</span>
+      </a>
+      <button class="hamburger"><span class="hamburger__line"></span><span class="hamburger__line"></span><span class="hamburger__line"></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" aria-hidden="true"></div>
+<nav class="mobile-nav">
+  <div class="mobile-nav__search">
+    <i class="fas fa-search s-icon"></i>
+    <input type="search" class="search-input" placeholder="Search…" autocomplete="off">
+    <button class="s-clear"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mobile-nav__links">
+    <a href="index.html"><span class="ico">🏠</span>Home</a>
+    <a href="laptops.html"><span class="ico">💻</span>Laptops</a>
+    <a href="mobiles.html"><span class="ico">📱</span>Mobiles</a>
+    <a href="accessories.html"><span class="ico">🎧</span>Accessories</a>
+    <a href="cart.html"><span class="ico">🛒</span>Cart</a>
+  </div>
+</nav>
+
+<main class="cart-page">
+  <div class="cart-container">
+    <h1>
+      <i class="fas fa-shopping-cart" style="color:var(--sky);margin-right:.5rem"></i>
+      My Cart
+      <span id="cart-title-count" style="font-size:1rem;font-weight:400;color:var(--gray)"></span>
+    </h1>
+
+    <div class="cart-layout">
+      <!-- Cart items list -->
+      <div>
+        <div id="cart-items" class="cart-items" aria-live="polite"></div>
+      </div>
+
+      <!-- Order Summary — no coupon, no checkout, no discount -->
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="sum-row">
+          <span class="sum-label">Subtotal</span>
+          <span class="sum-val" id="sum-sub">—</span>
+        </div>
+        <div class="sum-row">
+          <span class="sum-label">Delivery</span>
+          <span class="sum-val" id="sum-ship">—</span>
+        </div>
+        <div class="sum-row total">
+          <span class="sum-label">Total Payable</span>
+          <span class="sum-val" id="sum-total">—</span>
+        </div>
+
+        <!-- Share Cart button -->
+        <button class="btn btn-outline" id="cart-share-btn"
+          style="width:100%;margin-top:1.1rem;justify-content:center;gap:.5rem">
+          <i class="fas fa-share-alt"></i> Share Cart
+        </button>
+
+        <!-- Share Cart panel -->
+        <div class="cart-share-panel" id="cart-share-panel">
+          <div style="font-size:.74rem;font-weight:700;color:var(--gray-lt)">
+            <i class="fas fa-info-circle" style="color:var(--sky);margin-right:.3rem"></i>
+            Recipient will see your exact cart items
+          </div>
+          <div class="cart-share-url">
+            <input id="cart-share-url" readonly placeholder="Generating cart link…" aria-label="Cart share URL">
+            <button class="btn btn-sm btn-outline" onclick="copyCartUrl()">Copy</button>
+          </div>
+          <div class="cart-share-btns">
+            <button class="share-btn share-whatsapp" onclick="shareCartWA()">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem;text-align:center">
+          <a href="index.html" style="font-size:.8rem;color:var(--sky)">
+            <i class="fas fa-arrow-left"></i> Continue Shopping
+          </a>
+        </div>
+
+        <!-- Accepted payment methods (info only) -->
+        <div style="margin-top:1.25rem;padding-top:.85rem;border-top:1px solid var(--border)">
+          <div style="font-size:.7rem;color:var(--gray);margin-bottom:.45rem;text-align:center">Accepted Payment Methods</div>
+          <div style="font-size:.72rem;color:var(--sky);font-weight:600;text-align:center">
+            🔒 UPI · Visa · Mastercard · RuPay · PhonePe
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-grid container" style="padding:0 1.25rem">
+    <div class="footer-brand">
+      <a href="index.html" class="navbar__logo" style="font-size:1.15rem"><div class="navbar__logo-icon">⚡</div><div>Spark<span>Tech</span></div></a>
+      <p>India's premium destination for electronics.</p>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul>
+      <li><a href="laptops.html">Laptops</a></li><li><a href="mobiles.html">Mobiles</a></li>
+      <li><a href="tablets.html">Tablets</a></li><li><a href="accessories.html">Accessories</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Support</h4><ul>
+      <li><a href="#">Help Center</a></li><li><a href="#">Track Order</a></li>
+      <li><a href="#">Returns</a></li><li><a href="#">Contact Us</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Policies</h4><ul>
+      <li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Return Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2024 <span>SparkTech Electronics</span>. All rights reserved.</p></div>
+</footer>
+
+<div class="modal-overlay" id="wishlist-overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-head"><h2><i class="far fa-heart" style="color:#F43F5E;margin-right:.4rem"></i>My Wishlist</h2><button class="modal-close"><i class="fas fa-times"></i></button></div>
+    <div class="modal-body"><div id="wishlist-grid" class="wish-empty"><i class="far fa-heart"></i><p>Wishlist is empty.</p></div></div>
+  </div>
+</div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
